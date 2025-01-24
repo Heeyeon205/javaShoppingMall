@@ -1,6 +1,5 @@
 package menu_mall;
 
-
 import controller.MallController;
 import mall.MenuCommand;
 import util.Util;
@@ -18,18 +17,16 @@ public class MallMain implements MenuCommand {
 
 	@Override
 	public boolean update() {
-		int sel = Util.getValue("메뉴 입력", 0, 2);
+		int sel = Util.getValue("메뉴 입력: ", 0, 3);
 		if (sel == 0) {
 			System.out.println("[ 프로그램 종료 ]");
 			cont.setNext(null);
-		}
-		else if (sel == 1) {
+		} else if (sel == 1) {
 			cont.setNext("MallJoin");
 
 		} else if (sel == 2) {
 			cont.setNext("MallLogin");
-		} 
-
+		}
 		return false;
 	}
 

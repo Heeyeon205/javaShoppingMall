@@ -8,7 +8,7 @@ public class Member {
 	private String memberName;
 	
 	public Member(int memberNum, String id, String pw, String memberName) {
-		this.memberNum = memberNum;
+		this.memberNum = num++;
 		this.id = id;
 		this.pw = pw;
 		this.memberName = memberName;
@@ -16,9 +16,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return memberNum + " " + id + " " + pw + " " + memberName + " ";
+		return String.format("[%d] [%s] [%s] [%s님]\n", memberNum, id, pw, memberName); 
 	}
-
+	
 	public static int getNum() {
 		return num;
 	}

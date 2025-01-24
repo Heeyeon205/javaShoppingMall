@@ -3,6 +3,7 @@ package util;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Util {
 	static Scanner sc = new Scanner(System.in);
 
@@ -30,5 +31,4 @@ public class Util {
 		String str = sc.nextLine();
 		return str;
 	}
-
 }
