@@ -60,7 +60,7 @@ public class MallController {
 //		mapCont.put("MemberBoard", new MemberBoard());
 //		mapCont.put("MemberCart", new MemberCart());
 //		mapCont.put("MemberInfo", new MemberInfo());
-//		mapCont.put("MemberMain", new MemberMain());
+		mapCont.put("MemberMain", new MemberMain());
 //		mapCont.put("MemberShopping", new MemberShopping());
 		mapCont.put("MemberQuit", new MemberQuit());
 

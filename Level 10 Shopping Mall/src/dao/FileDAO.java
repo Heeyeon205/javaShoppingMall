@@ -79,4 +79,8 @@ public class FileDAO {
 		default : System.out.println("[!] 알 수 없는 파일 형식입니다.\n" + fileName.getName());
 		}
 	}
+	
+	public void saveFile() {
+		
+	}
 }

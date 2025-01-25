@@ -32,6 +32,7 @@ public class AdminItem implements MenuCommand{
 			if(!iDao.isValidCategoryName(category)) return false;
 			int price = Util.getValue("가격: ", 100, Integer.MAX_VALUE);
 			iDao.insertItem(category, item, price);
+			System.out.println("[" + item + "] 상품 추가 완료!");
 		}else if(sel == 2) {
 			System.out.println("=====[상품 삭제]=====");
 			iDao.printItemList();

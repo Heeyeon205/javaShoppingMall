@@ -11,7 +11,7 @@ public class MemberMain implements MenuCommand{
 	public void init() {
 		cont = MallController.getInstance();
 		System.out.printf("[%s님 로그인 상태]\n", cont.getLoginId());
-		System.out.println("[1] 상품 구매%n[2] 상품 구매 내역%n[3] 게시판%n[4] 내 정보%n[5] 회원 탈퇴%n[6] 로그아웃%n[0] 프로그램 종료");
+		System.out.println("[1] 상품 구매\n[2] 상품 구매 내역\n[3] 게시판\n[4] 내 정보\n[5] 회원 탈퇴\n[6] 로그아웃\n[0] 프로그램 종료");
 	}
 
 	@Override

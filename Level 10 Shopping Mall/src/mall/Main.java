@@ -8,5 +8,4 @@ public class Main {
 		MallController con = MallController.getInstance();
 		con.init();
 	}
-
 }
