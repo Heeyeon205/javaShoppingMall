@@ -46,4 +46,26 @@ public class CartDAO {
 			}
 		}
 	}
+
+	public String getData() {
+			StringBuilder data = new StringBuilder();
+			for(Cart c : cList) {
+				data.append(c.getCartNum()).append("/");
+				data.append(c.getId()).append("/");
+				data.append(c.getItemNum()).append("/");
+				data.append(c.getItemCnt()).append("\n");
+			}
+			return data.toString();
+	}
+
+	public ArrayList<Integer> getUserItemNoList(String loginId) {
+		ArrayList<Integer> userNoList = new ArrayList<>();
+		for(int i = 0; i < cList.size(); i++) {
+			if(cList.get(i).getId().equals(loginId)) {
+				userNoList.add(cList.get(i).getItemNum());
+			}
+		}
+		return userNoList;
+	}
+
 }

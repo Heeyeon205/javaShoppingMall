@@ -57,11 +57,11 @@ public class MallController {
 		mapCont.put("AdminItem", new AdminItem());
 		mapCont.put("AdminMain", new AdminMain());
 		mapCont.put("AdminMember", new AdminMember());
-//		mapCont.put("MemberBoard", new MemberBoard());
-//		mapCont.put("MemberCart", new MemberCart());
-//		mapCont.put("MemberInfo", new MemberInfo());
+		mapCont.put("MemberBoard", new MemberBoard());
+		mapCont.put("MemberCart", new MemberCart());
+		mapCont.put("MemberInfo", new MemberInfo());
 		mapCont.put("MemberMain", new MemberMain());
-//		mapCont.put("MemberShopping", new MemberShopping());
+		mapCont.put("MemberShopping", new MemberShopping());
 		mapCont.put("MemberQuit", new MemberQuit());
 
 		menuCom = mapCont.get("MallMain");

@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
+import dto.Item;
 import dto.Member;
 
 public class MemberDAO {
@@ -33,7 +34,6 @@ public class MemberDAO {
 	}
 
 	public void addMember(String id, String pw, String name) {
-		Member.setNum(Member.getNum() + 1);
 		mList.add(new Member(Member.getNum(), id, pw, name));
 		System.out.println(name + "님 회원가입 완료!");
 	}
@@ -77,6 +77,43 @@ public class MemberDAO {
 				mList.remove(i);
 			}
 		}
+	}
+
+	public String getData() {
+		StringBuilder data = new StringBuilder();
+		for(Member m : mList) {
+			data.append(m.getMemberNum()).append("/");
+			data.append(m.getId()).append("/");
+			data.append(m.getPw()).append("/");
+			data.append(m.getMemberName()).append("\n");
+		}
+		return data.toString();
+	}
+
+	public void printUserInfo(String loginId) {
+		for(Member m : mList) {
+			if(m.getId().equals(loginId)) {
+				System.out.println(m);
+			}
+		}
+	}
+
+	public int isValidPw(String loginId, String newPw) {
+		int idx = 0;
+		for(int i = 0; i < mList.size(); i++) {
+			if(mList.get(i).getId().equals(loginId)) {
+				idx = i;
+				if(mList.get(i).getPw().equals(newPw)) {
+					System.out.println("[!] 현재와 동일한 비밀번호로 설정할 수 없습니다.");
+					return -1;
+				}
+			}
+		}
+		return idx;
+	}
+
+	public void changePw(int idx, String newPw) {
+		mList.get(idx).setPw(newPw);
 	}
 
 }

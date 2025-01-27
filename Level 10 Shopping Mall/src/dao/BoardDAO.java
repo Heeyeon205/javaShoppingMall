@@ -7,6 +7,10 @@ import dto.Board;
 public class BoardDAO {
 	private static BoardDAO instance;
 	private ArrayList<Board> bList = new ArrayList<>();
+	public ArrayList<Board> getbList() {
+		return bList;
+	}
+
 	private final int SHOW_PAGE = 5;
 	private int totalPost;
 	private int curPage;
@@ -101,5 +105,45 @@ public class BoardDAO {
 	public void deletePost(int idx) {
 		bList.remove(idx);
 		System.out.println(idx+1 + "번 게시글 삭제 완료.");
+	}
+
+	public String getData() {
+		StringBuilder data = new StringBuilder();
+		for(Board b : bList) {
+			data.append(b.getBoradNum()).append("/");
+			data.append(b.getTitle()).append("/");
+			data.append(b.getId()).append("/");
+			data.append(b.getDate()).append("/");
+			data.append(b.getContents()).append("/");
+			data.append(b.getHits()).append("\n");
+		}
+		return data.toString();
+	}
+
+	public int printUserPostList(String loginId) {
+		int no = 0;
+		for(int i = 0; i < bList.size(); i++) {
+			if(bList.get(i).getId().equals(loginId)) {
+				System.out.printf("%d. [%s] %s\n", ++no, bList.get(i).getTitle(), bList.get(i).getContents());
+			}
+		}
+		if(no == 0) {
+			System.out.println("[!] 작성한 게시글이 없습니다.");
+		}
+		System.out.println("--------------------");
+		return no;
+	}
+
+	public int getpostIdx(String loginId, int delNum) {
+		int no = 0;
+		for(int i = 0; i < bList.size(); i++) {
+			if(bList.get(i).getId().equals(loginId)) {
+				no++;
+				if(no == delNum) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 }

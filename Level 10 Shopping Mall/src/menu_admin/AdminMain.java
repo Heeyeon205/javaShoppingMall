@@ -34,7 +34,7 @@ public class AdminMain implements MenuCommand {
 		} else if (sel == 5) {
 			int response = Util.getValue("현재까지 수정한 데이터를 저장 하시겠습니까?\n[1] 예 [2] 아니오 ", 1, 3);
 			if(response == 1) {
-				FileDAO.getInstance().saveFile();
+				FileDAO.getInstance().saveAllFiles();
 			}
 		} else if (sel == 0) {
 			System.out.println("프로그램 종료");
