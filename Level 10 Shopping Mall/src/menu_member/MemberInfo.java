@@ -7,11 +7,13 @@ import util.Util;
 
 public class MemberInfo implements MenuCommand{
 	private MallController cont;
+	private Util util;
 	private MemberDAO mDao;
 
 	@Override
 	public void init() {
 		cont = MallController.getInstance();
+		util = Util.getInstance();
 		mDao = MemberDAO.getInstance();
 		System.out.println("=====[내 정보]=====");
 		mDao.printUserInfo(cont.getLoginId());

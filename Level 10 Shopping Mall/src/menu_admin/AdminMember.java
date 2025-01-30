@@ -7,11 +7,13 @@ import util.Util;
 
 public class AdminMember implements MenuCommand{
 	private MallController cont;
+	private Util util;
 	private MemberDAO mDAO;
 
 	@Override
 	public void init() {
 		cont = MallController.getInstance();
+		util = Util.getInstance();
 		mDAO = MemberDAO.getInstance();
 		System.out.println("=====[회원 관리]=====");
 		System.out.println("[1] 회원 목록\n[2] 회원 삭제\n[3] 뒤로가기\n[0] 프로그램 종료");
@@ -19,7 +21,7 @@ public class AdminMember implements MenuCommand{
 
 	@Override
 	public boolean update() {
-		int sel = Util.getValue("메뉴 입력: ", 0, 4);
+		int sel = util.getValue("메뉴 입력: ", 0, 4);
 		if(sel == 1) {
 			mDAO.getMemberList();
 		}else if(sel == 2) {

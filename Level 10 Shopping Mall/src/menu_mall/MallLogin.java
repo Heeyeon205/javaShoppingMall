@@ -7,18 +7,20 @@ import util.Util;
 
 public class MallLogin implements MenuCommand {
 	private MallController cont;
-
+	private Util util;
+	
 	@Override
 	public void init() {
-		System.out.println("=====[ 로그인 ]=====");
 		cont = MallController.getInstance();
+		util = Util.getInstance();
+		System.out.println("=====[ 로그인 ]=====");
 	}
 
 	@Override
 	public boolean update() {
 		MemberDAO dao = MemberDAO.getInstance();
-		String id = Util.getString("아이디: ");
-		String pw = Util.getString("비밀번호: ");
+		String id = util.getString("아이디: ");
+		String pw = util.getString("비밀번호: ");
 		if (dao.isValidMember(id, pw) != null) {
 			if (id.equals("admin")) {
 				cont.setLoginId("admin");

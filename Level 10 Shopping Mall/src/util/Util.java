@@ -3,9 +3,18 @@ package util;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class Util {
-	static Scanner sc = new Scanner(System.in);
+	private static Scanner sc = new Scanner(System.in);
+	private static Util instance;
+	
+
+	private Util() {}
+	public static Util getInstance() {
+		if(instance == null) {
+			instance = new Util();
+		}
+		return instance;
+	}
 
 	public static int getValue(String msg, int min, int max) {
 		while (true) {
@@ -27,8 +36,18 @@ public class Util {
 	}
 
 	public static String getString(String msg) {
-		System.out.println(msg);
-		String str = sc.nextLine();
-		return str;
+		while (true) {
+			System.out.println(msg);
+			String str = sc.nextLine().trim();
+			if (str.isEmpty()) {
+				System.out.println("공백은 입력할 수 없습니다.");
+				continue;
+			}
+			if(str.contains(" ")) {
+				System.out.println("문자 사이 공백은 입력할 수 없습니다.");
+				continue;
+			}
+			return str;
+		}
 	}
 }

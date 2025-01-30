@@ -24,11 +24,11 @@ public class MallController {
 	private String next;
 	private MenuCommand menuCom;
 	public Map<String, MenuCommand> mapCont;
-	static private MallController instance = new MallController();
+	private static MallController instance = new MallController();
 	
 	private MallController() {}
 
-	static public MallController getInstance() {
+	public static MallController getInstance() {
 		if(instance == null) {
 			instance = new MallController();
 		}
