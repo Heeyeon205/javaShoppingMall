@@ -23,7 +23,7 @@ public class ItemDAO {
 		}
 		return instance;
 	}
-	
+
 	public ArrayList<Item> getiList() {
 		return iList;
 	}
@@ -50,43 +50,43 @@ public class ItemDAO {
 					.forEach(System.out::print);
 		}
 	}
-	
+
 	public int printCategorylist() {
 		System.out.println("=====[카테고리 목록]=====");
 		if (iList.size() == 0) {
 			System.out.println("[!] 상품이 없습니다.");
 			return 0;
 		} else {
-			ArrayList<String> categoryName = iList.stream().map(category -> category.getCategoryName())
-					.distinct().collect(Collectors.toCollection(ArrayList::new));
-			for(int i = 0; i < categoryName.size(); i++) {
-				categoryMap.put(i+1, categoryName.get(i));
+			ArrayList<String> categoryName = iList.stream().map(category -> category.getCategoryName()).distinct()
+					.collect(Collectors.toCollection(ArrayList::new));
+			for (int i = 0; i < categoryName.size(); i++) {
+				categoryMap.put(i + 1, categoryName.get(i));
 			}
-			for(Map.Entry<Integer, String> c : categoryMap.entrySet()) {
+			for (Map.Entry<Integer, String> c : categoryMap.entrySet()) {
 				System.out.printf("[%d] : %s\n", c.getKey(), c.getValue());
 			}
 			System.out.println("[0] : 뒤로가기");
 			return categoryMap.size();
 		}
 	}
-	
+
 	public void printCategory(int key) {
 		int no = 1;
-		for(int i = 0; i < iList.size(); i++) {
-			if(iList.get(i).getCategoryName().equals(categoryMap.get(key))) {
+		for (int i = 0; i < iList.size(); i++) {
+			if (iList.get(i).getCategoryName().equals(categoryMap.get(key))) {
 				System.out.printf("[%d] %s %d원\n", no++, iList.get(i).getItemName(), iList.get(i).getPrice());
 			}
 		}
 	}
-	
+
 	public boolean isValidItemName(int key, String itemName) {
-		for(int i = 0; i < iList.size(); i++) {
-			if(iList.get(i).getCategoryName().equals(categoryMap.get(key))) {
-				if(iList.get(i).getItemName().equals(itemName)) {
+		for (int i = 0; i < iList.size(); i++) {
+			if (iList.get(i).getCategoryName().equals(categoryMap.get(key))) {
+				if (iList.get(i).getItemName().equals(itemName)) {
 					return true;
 				}
 			}
-			}
+		}
 		System.out.println("[!] 해당 카테고리에 없는 상품입니다.");
 		return false;
 	}
@@ -132,12 +132,12 @@ public class ItemDAO {
 	}
 
 	public String getCategoryName(int i) {
-			return iList.get(i).getCategoryName();
+		return iList.get(i).getCategoryName();
 	}
 
 	public String getData() {
 		StringBuilder data = new StringBuilder();
-		for(Item i : iList) {
+		for (Item i : iList) {
 			data.append(i.getItemNum()).append("/");
 			data.append(i.getCategoryName()).append("/");
 			data.append(i.getItemName()).append("/");
@@ -147,8 +147,8 @@ public class ItemDAO {
 	}
 
 	public int getItemNumToItemName(String itemName) {
-		for(int i = 0; i < iList.size(); i++) {
-			if(iList.get(i).getItemName().equals(itemName)) {
+		for (int i = 0; i < iList.size(); i++) {
+			if (iList.get(i).getItemName().equals(itemName)) {
 				return iList.get(i).getItemNum();
 			}
 		}
@@ -156,20 +156,23 @@ public class ItemDAO {
 	}
 
 	public void printMyCartList(ArrayList<Integer> userItemNoList) {
-		int no = 1;
-		int cnt = 0;
-		for (int i = 0; i < iList.size(); i++) {
-			cnt = 0;
-			for (int j = 0; j < userItemNoList.size(); j++) {
-				if (iList.get(i).getItemNum() == userItemNoList.get(j)) {
-					cnt++;
+		if (userItemNoList.size() == 0) {
+			System.out.println("[!] 아직 구매한 상품이 없습니다.");
+		} else {
+			int no = 1;
+			int cnt = 0;
+			for (int i = 0; i < iList.size(); i++) {
+				cnt = 0;
+				for (int j = 0; j < userItemNoList.size(); j++) {
+					if (iList.get(i).getItemNum() == userItemNoList.get(j)) {
+						cnt++;
+					}
 				}
-			}
-			if(cnt > 0) {
-			System.out.printf("[%d] %s %d원 %d개 (총 %d원)\n", no++, iList.get(i).getItemName(), iList.get(i).getPrice(),
-					cnt, iList.get(i).getPrice() * cnt);
+				if (cnt > 0) {
+					System.out.printf("[%d] %s %d원 %d개 (총 %d원)\n---------------------\n", no++,
+							iList.get(i).getItemName(), iList.get(i).getPrice(), cnt, iList.get(i).getPrice() * cnt);
+				}
 			}
 		}
 	}
-
 }

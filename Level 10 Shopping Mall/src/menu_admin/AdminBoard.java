@@ -26,7 +26,7 @@ public class AdminBoard implements MenuCommand {
 			while(true) {
 			bDao.printBoard();
 			System.out.println("---------------");
-			System.out.println("[1] 이전\n[2] 이후\n[3] 게시글 보기\n[4] 뒤로가기\n[0] 프로그램 종료");
+			System.out.println("[1] 이전 페이지\n[2] 다음 페이지\n[3] 게시글 보기\n[4] 뒤로가기\n[0] 프로그램 종료");
 			int input = util.getValue("메뉴 입력: ", 0, 5);
 			if(input == 1) {
 				bDao.getPreviousPage();
